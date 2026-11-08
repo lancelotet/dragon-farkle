@@ -168,7 +168,7 @@
         s = fromDb(s);
         if (s.status !== 'playing' || s.seats[s.current].type !== 'ai') return;
         return E.applyAction(s, E.aiAction(s)) || undefined;
-      }).then(function () { aiBusy = false; }, function () { aiBusy = false; });
+      }).then(function () { aiBusy = false; aiTick(); }, function () { aiBusy = false; });
     }, 900);
   }
 
