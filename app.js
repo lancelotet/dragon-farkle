@@ -12,7 +12,22 @@
   firebase.initializeApp(cfg);
   var db = firebase.database();
 
-  var FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+  // Pip centers on a 100x100 grid: columns 25/50/75, rows 25/50/75.
+  var PIPS = {
+    1: [[50, 50]],
+    2: [[25, 25], [75, 75]],
+    3: [[25, 25], [50, 50], [75, 75]],
+    4: [[25, 25], [75, 25], [25, 75], [75, 75]],
+    5: [[25, 25], [75, 25], [50, 50], [25, 75], [75, 75]],
+    6: [[25, 25], [75, 25], [25, 50], [75, 50], [25, 75], [75, 75]]
+  };
+
+  function dieSvg(v) {
+    var circles = PIPS[v].map(function (p) {
+      return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="9" fill="currentColor"/>';
+    }).join('');
+    return '<svg viewBox="0 0 100 100" aria-label="' + v + '">' + circles + '</svg>';
+  }
   var CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
 
   function load(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
@@ -239,7 +254,7 @@
         inner += '<div class="dice">' + g.dice.map(function (v, i) {
           var sel = isMyTurn && pending.indexOf(i) >= 0 ? ' sel' : '';
           var attr = isMyTurn ? ' data-act="die" data-i="' + i + '"' : ' disabled';
-          return '<button class="die' + sel + '"' + attr + '>' + FACES[v - 1] + '</button>';
+          return '<button class="die' + sel + '"' + attr + '>' + dieSvg(v) + '</button>';
         }).join('') + '</div>';
         if (isMyTurn) {
           var pts = E.scoreSelection(pending.map(function (i) { return g.dice[i]; }));
