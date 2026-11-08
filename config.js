@@ -6,5 +6,5 @@ window.FARKLE_FIREBASE_CONFIG = {
   projectId: 'dragon-farkle-39524',
   storageBucket: 'REPLACE_PROJECT.appspot.com',
   messagingSenderId: '259909494879',
-  appId: 'REPLACE_APP_ID'
+  appId: '1:259909494879:web:64afbb684ce9c2f69193ea'
 };
