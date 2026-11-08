@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Farkle</title>
+  <style>
+    :root { --bg:#f6f3ee; --card:#ffffff; --ink:#1d1d1f; --muted:#6b6b70; --accent:#b4432b; --accent-ink:#ffffff; --line:#e2dcd2; --cur:#fff1d6; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { --bg:#15161a; --card:#1f2026; --ink:#f2f2f4; --muted:#9a9aa3; --accent:#e0664b; --accent-ink:#15161a; --line:#33343c; --cur:#3a3122; }
+    }
+    :root[data-theme="dark"] { --bg:#15161a; --card:#1f2026; --ink:#f2f2f4; --muted:#9a9aa3; --accent:#e0664b; --accent-ink:#15161a; --line:#33343c; --cur:#3a3122; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    #app { max-width: 520px; margin: 0 auto; padding: 16px; }
+    h1, h2 { margin: 8px 0 12px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:12px; }
+    .row { display:flex; justify-content:space-between; align-items:center; padding:8px 10px; border-radius:8px; }
+    .row.cur { background: var(--cur); font-weight: 600; }
+    .row b { font-variant-numeric: tabular-nums; }
+    button { font: inherit; border:0; border-radius:10px; padding:12px 16px; background:var(--accent); color:var(--accent-ink); cursor:pointer; margin:4px 4px 4px 0; }
+    button:disabled { opacity:.4; cursor:default; }
+    button.ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
+    input { font: inherit; padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); width:100%; margin:4px 0 8px; }
+    .dice { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0; }
+    .die { width:64px; height:64px; font-size:44px; line-height:64px; text-align:center; border-radius:12px; border:2px solid var(--line); background:var(--card); padding:0; margin:0; color:var(--ink); }
+    .die.sel { border-color: var(--accent); box-shadow: 0 0 0 3px var(--cur) inset; }
+    .muted { color:var(--muted); font-size:14px; }
+    .status { min-height: 1.4em; margin: 6px 0; }
+    .code { font-family: ui-monospace, Menlo, Consolas, monospace; letter-spacing: .15em; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
