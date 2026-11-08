@@ -1,10 +1,10 @@
 // Replace every REPLACE value with your Firebase web app config (Project settings > General > Your apps).
 window.FARKLE_FIREBASE_CONFIG = {
   apiKey: 'REPLACE_API_KEY',
-  authDomain: 'REPLACE_PROJECT.firebaseapp.com',
+  authDomain: 'dragon-farkle-39524.firebaseapp.com',
   databaseURL: 'https://REPLACE_PROJECT-default-rtdb.firebaseio.com',
-  projectId: 'REPLACE_PROJECT',
+  projectId: 'dragon-farkle-39524',
   storageBucket: 'REPLACE_PROJECT.appspot.com',
-  messagingSenderId: 'REPLACE_SENDER_ID',
+  messagingSenderId: '259909494879',
   appId: 'REPLACE_APP_ID'
 };
